@@ -1,5 +1,8 @@
 package lk.ijse.cmjd108.conceptDemo.controller;
 
+import lk.ijse.cmjd108.conceptDemo.dto.Teacher;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,5 +16,11 @@ public class DemoController {
     @PostMapping("/{greeting}")
     public void getData(@PathVariable String greeting){
         System.out.println(greeting);
+    }
+    @PostMapping(value = "/teacher",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void getTeacher(@RequestBody Teacher teacher){
+        System.out.println(teacher.getId());
+        System.out.println(teacher.getName());
+        System.out.println(teacher.getCity());
     }
 }
