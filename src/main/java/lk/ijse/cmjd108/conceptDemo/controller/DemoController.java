@@ -13,14 +13,17 @@ public class DemoController {
     public String healthCheck(){
         return "Concept Demo App running";
     }
+
     @PostMapping("/{greeting}")
-    public void getData(@PathVariable String greeting){
+    public String getData(@PathVariable String greeting){
         System.out.println(greeting);
+        return greeting;
     }
-    @PostMapping(value = "/teacher",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void getTeacher(@RequestBody Teacher teacher){
+    @PostMapping(value = "/teacher",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public Teacher getTeacher(@RequestBody Teacher teacher){
         System.out.println(teacher.getId());
         System.out.println(teacher.getName());
         System.out.println(teacher.getCity());
+        return teacher;
     }
 }
